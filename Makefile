@@ -2,7 +2,7 @@
 
 setup:
 	# Create python virtualenv.
-	python3 -m venv ~/.ML-microservice-api
+	python3 -m venv ~/.cloud-devops-capstone
 
 install:
 	# Install dependencies detailed in `requirements.txt`.
