@@ -1,9 +1,13 @@
-#!/usr/bin/env python
-import click
+from flask import Flask
 
-@click.command()
+
+app = Flask(__name__)
+
+
+@app.route('/')
 def hello():
-    click.echo('Hello, Udacity! This is my Capstone Project.')
-    
+    return "Hello, Udacity! Welcome to my Capstone project."
+
+
 if __name__ == '__main__':
-    hello()
+    app.run(port=80) # Run on port 80
