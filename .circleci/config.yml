@@ -30,6 +30,11 @@ jobs:
           command: |
             source ~/.cloud-devops-capstone/bin/activate
             make lint
+            
+      - run:
+          name: security scan
+          command: |
+            safety check
 
 workflows:
   cicd-pipeline:
