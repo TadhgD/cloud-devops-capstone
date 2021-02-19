@@ -3,7 +3,8 @@
 # This tags and uploads an image to Docker Hub
 
 # This is your Docker ID/path
-dockerpath=tadhgdowney/helloapp
+dockerpath=tadhgdowney/helloapp-$1
+echo "Dockerpath: ${dockerpath}"
 
 # Run the Docker Hub container with kubernetes
 kubectl run helloapp \
