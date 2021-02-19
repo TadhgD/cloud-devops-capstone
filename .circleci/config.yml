@@ -34,6 +34,7 @@ jobs:
       - run:
           name: security scan
           command: |
+            source ~/.cloud-devops-capstone/bin/activate
             safety check
 
 workflows:
