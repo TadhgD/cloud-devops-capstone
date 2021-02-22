@@ -37,17 +37,16 @@ jobs:
             source ~/.cloud-devops-capstone/bin/activate
             safety check
       
+      - setup_remote_docker:
+          version: 20.10.2
+          docker_layer_caching: true
+      
       - run:
-          name: Build new Docker Image
+          name: Build & Publish new image
           command: |
-            docker login --username ${DOCKER_ID} --password ${DOCKER_PASS}
             docker build --tag capstone-test .
             docker image ls
-            
-      - run:
-          name: Upload new Docker Image
-          command: |
-            docker login --username ${DOCKER_ID} --password ${DOCKER_PASS}
+            echo "${DOCKER_PASS}" | docker login --username ${DOCKER_ID} --password-stdin
             docker image tag capstone-test ${DOCKER_ID}/capstone-test
             docker push ${DOCKER_ID}/capstone-test
             
