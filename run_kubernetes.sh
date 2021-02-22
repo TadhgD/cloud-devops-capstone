@@ -3,16 +3,16 @@
 # This tags and uploads an image to Docker Hub
 
 # This is your Docker ID/path
-dockerpath=tadhgdowney/helloapp-$1
+dockerpath=tadhgdowney/capstone-$1
 echo "Dockerpath: ${dockerpath}"
 
 # Run the Docker Hub container with kubernetes
-kubectl run helloapp \
+kubectl run capstone \
     --image=$dockerpath\
-    --port=8010 --labels app=helloapp
+    --port=80 --labels app=capstone
 
 # List kubernetes pods
 kubectl get pods
 
 # Forward the container port to a host
-kubectl port-forward helloapp 8000:8010
+kubectl port-forward --address 0.0.0.0 capstone 8000:80
