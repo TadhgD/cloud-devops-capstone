@@ -62,11 +62,12 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
       
-      - run:
-          name: Install dependencies
+      - run: 
+          name: Install kubectl
           command: |
-            # Probably need kubectl
-            # What else..? Look at CircleCI example probably
+            wget -O kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+            chmod +x ./kubectl
+            sudo mv ./kubectl /usr/local/bin/kubectl
       
       - run:
           name: Link to cluster
