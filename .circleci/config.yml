@@ -77,16 +77,16 @@ jobs:
             kubectl get svc
       
       - run:
-          name: Deploy cluster (Conditionally?)
+          name: Deploy cluster / Update image
           command: |
             kubectl apply -f capstone-deployment.yaml # May want to do this conditionally
             kubectl get svc
             kubectl get pods
             
       - run:
-          name: Perform rolling update
+          name: Verify rollout
           command: |
-            kubectl set image deployment/capstone-deployment capstone-deployment=tadhgdowney/capstone-test
+            kubectl rollout status deployment.apps/capstone-deployment
             kubectl get all
   
 workflows:

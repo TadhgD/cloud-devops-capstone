@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello, Udacity! Welcome to my Capstone project."
+    return "<h3>Hello, Udacity! Welcome to my Capstone project.<h3>"
 
 
 if __name__ == '__main__':
